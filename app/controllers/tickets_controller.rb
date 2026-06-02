@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_action :authenticate_customer!
 
+
   def summary
     tickets = current_customer.admin? ? Ticket.all : current_customer.tickets
 
@@ -21,7 +22,7 @@ class TicketsController < ApplicationController
       query = "%#{params[:search]}%"
 
       @tickets = @tickets.where(
-        "title LIKE :query OR status LIKE :query OR priority LIKE :query OR id LIKE :query",
+        "title LIKE :query OR status LIKE :query OR priority LIKE :query OR id LIKE :query OR ticket_number LIKE :query" ,
         query: query
       )
     end
@@ -46,7 +47,8 @@ def create
 end
 
   def show
-    @ticket = Ticket.find(params[:id])
+      @ticket = Ticket.find(params[:id])
+      @comment = Comment.new
   end
 
   def edit
@@ -75,6 +77,4 @@ private
  def ticket_params
    params.require(:ticket).permit(:title, :description, :priority, :status, images: [])
  end
-
-
 end

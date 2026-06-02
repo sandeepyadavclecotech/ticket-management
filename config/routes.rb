@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins
+ # devise_for :admins
 
    get "/summary", to: "tickets#summary"
 
@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :tickets
 
-
+  resources :tickets do
+    resources :comments, only: [:create]
+  end
 
   devise_for :customers
 

@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :tickets , dependent: :destroy
+  has_many :comments
 
     enum role: {
     customer: "customer",
