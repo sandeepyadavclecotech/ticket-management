@@ -13,7 +13,7 @@
     <%= link_to "Raise new ticket", new_ticket_path, class: "btn btn-primary mt-3 mb-4 "%>
   </div>
 <%else%>
-  <h2 class="text-center text-info mt-2 mb-2"> Tickets</h2>
+  <h2 class="text-center text-info mt-2 mb-4"> Tickets</h2>
   <div class="container">
     <table class="table table-bordered">
       <thead>
@@ -30,7 +30,13 @@
           <tr>
             <td><%= ticket.ticket_number %></td>
             <td><%= ticket.title %></td>
-            <td><%= ticket.status %></td>
+            <%if ticket.status == "Closed"%>
+              <td class="text-danger"><%= ticket.status %></td>
+            <%elsif ticket.status == "In-Progress"%>
+              <td class="text-warning"><%= ticket.status %></td>
+            <%else%>
+              <td class="text-success"><%= ticket.status %></td>
+            <%end%>
             <td><%= ticket.priority %></td>
             <td>
               <div class="btn-group">

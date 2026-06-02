@@ -1,6 +1,5 @@
 <%= render "shared/navbar" %>
-<h1 class="text-center mt-3 mb-4">Show Page</h1>
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center mt-3">
   <div class="card text-center" style="width: 18rem;">
     <% if @ticket.images.attached? %>
       <div id="carouselExample" class="carousel slide">
@@ -51,19 +50,25 @@
     </div>
   </div>
 </div>
+<hr/>
 <div class="container">
-  <h3 class="text-center mt-4 mb-3">Add Comment</h3>
+  <h3 class="text-center mt-4 mb-3 ">Add Comment</h3>
   <%= form_with model: [@ticket, @comment] do |form| %>
     <%= form.label :content, class: "form-label" %>
     <%= form.text_area :content, class: "form-control" %>
-    <%= form.submit "Add Comment", class: "btn btn-primary mt-2" %>
+    <%= form.submit "Add Comment", class: "btn btn-primary mt-2 mb-3" %>
   <% end %>
-  .
-  <h3 class="mt-4">Comments</h3>
+  <%if @comments.present?%>
+    <h3 class="mt-4 ">Comments</h3>
+  <%end%>
   <% @ticket.comments.each do |comment| %>
     <div class="card mb-2">
       <div class="card-body">
-        <strong><%= comment.customer.email %></strong>
+        <%if comment.customer.admin?%>
+          <strong class="text-success">Admin</strong>
+        <%else%>
+          <strong class="text-danger"><%= comment.customer.email %></strong>
+        <%end%>
         <p><%= comment.content %></p>
       </div>
     </div>

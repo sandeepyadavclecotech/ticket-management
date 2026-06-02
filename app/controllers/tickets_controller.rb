@@ -1,7 +1,6 @@
 class TicketsController < ApplicationController
   before_action :authenticate_customer!
 
-
   def summary
     tickets = current_customer.admin? ? Ticket.all : current_customer.tickets
 
