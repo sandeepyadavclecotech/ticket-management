@@ -11,12 +11,21 @@ class TicketsController < ApplicationController
   end
 
   def index
-    if current_customer.admin?
+  if current_customer.admin?
     @tickets = Ticket.all
-    else
-      @tickets = current_customer.tickets
-    end
+  else
+    @tickets = current_customer.tickets
   end
+
+  if params[:search].present?
+    query = "%#{params[:search]}%"
+
+    @tickets = @tickets.where(
+      "title LIKE :query OR status LIKE :query OR priority LIKE :query OR id LIKE :query",
+      query: query
+    )
+  end
+end
 
   def new
     @ticket = Ticket.new
@@ -25,7 +34,7 @@ class TicketsController < ApplicationController
 def create
   @ticket = Ticket.new(ticket_params)
   @ticket.customer_id = current_customer.id
-  @ticket.status = "open"
+  @ticket.status = "Open"
   @ticket.priority = "Low"
 
   if @ticket.save

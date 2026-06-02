@@ -1,21 +1,42 @@
 <header class="p-3 text-bg-dark">
   <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"> <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"> <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg> </a>
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><%= link_to "Home", root_path, class: "nav-link px-2 text-white"%></li>
-        <li><%= link_to "Raise Ticket", new_ticket_path, class: "nav-link px-2 text-white"%></li>
-        <li><%= link_to "Ticket Summary", summary_path, class: "nav-link px-2 text-white"%></li>
+        <li><%= link_to "Home", root_path, class: "nav-link px-2 text-white" %></li>
+        <% if current_customer.customer? %>
+          <li><%= link_to "Raise Ticket", new_ticket_path, class: "nav-link px-2 text-white" %></li>
+        <% end %>
+        <li><%= link_to "Ticket Summary", summary_path, class: "nav-link px-2 text-white" %></li>
       </ul>
+      <div class="text-end mx-3">
+        <%= form_with url: tickets_path, method: :get, local: true, class: "d-flex" do |form| %>
+          <%= form.text_field :search,
+                              value: params[:search],
+                              placeholder: "Search tickets",
+                              class: "form-control me-2" %>
+          <%= form.submit "Search", class: "btn btn-outline-warning" %>
+        <% end %>
+      </div>
       <div class="text-end">
-        <% if customer_signed_in?%>
+        <% if customer_signed_in? %>
           <%= button_to "Logout",
-    destroy_customer_session_path,
-    method: :delete,
-    class: "btn btn-danger" %>
-        <%else%>
-          <%= link_to "Login", new_customer_session_path, class: "btn btn-outline-light me-2" %>
-          <%= link_to "Sign-up", new_customer_registration_path, class: "btn btn btn-warning"%>
-        <%end%>
+                        destroy_customer_session_path,
+                        method: :delete,
+                        class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Login",
+                      new_customer_session_path,
+                      class: "btn btn-outline-light me-2" %>
+          <%= link_to "Sign-up",
+                      new_customer_registration_path,
+                      class: "btn btn-warning" %>
+        <% end %>
       </div>
     </div>
-  </header>
+  </div>
+</header>
