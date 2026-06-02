@@ -1,0 +1,25 @@
+<%= render "shared/navbar"%>
+<% if notice%>
+  <p class="text-success"><%= notice%></p>
+<%end%>
+<h2 class="text-center text-info mt-3 mb-4"> Tickets Summary</h2>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Total Tickets</th>
+        <th>Opened Tickets</th>
+        <th>In Progress Tickets</th>
+        <th>Closed Tickets</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @totalTickets %></td>
+        <td><%= @openedTickets %></td>
+        <td><%= @inProgressTickets %></td>
+        <td><%= @closedTickets %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

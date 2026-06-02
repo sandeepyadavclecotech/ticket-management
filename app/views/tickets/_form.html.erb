@@ -1,0 +1,39 @@
+<div class="container">
+  <%= form_with model: @ticket do |form|%>
+    <div class="row mt-2 mb-3">
+      <div class="row mt-2">
+        <div class="col-md-6">
+          <%= form.label :Title, class: "form-label"%>
+          <%= form.text_field :title, class: "form-control"%>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-6">
+          <%= form.label :Description, class: "form-label"%>
+          <%= form.text_area :description, size: "50*20", class: "form-control"%>
+        </div>
+      </div>
+      <%if current_customer.admin?%>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <%= form.label :status, class: "form-label" %>
+            <%= form.select :status,
+        [["Open", "Open"], ["In-Progress", "In-Progress"], ["Closed", "Closed"]],
+        {},
+        class: "form-select" %>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <%= form.label :priority, class: "form-label" %>
+            <%= form.select :priority,
+        [["Low", "Low"], ["Medium", "Medium"], ["High", "High"]],
+        {},
+        class: "form-select" %>
+          </div>
+        </div>
+      <%end%>
+    </div>
+    <%= form.submit%>
+  <%end%>
+</div>

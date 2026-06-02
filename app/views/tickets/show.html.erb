@@ -1,0 +1,13 @@
+<%= render "shared/navbar"%>
+
+<h1 class="text-center">show page</h1>
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title"><%= @ticket.title%></h5>
+      <p class="card-text"><%=@ticket.description %></p>
+      <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary btn-sm"%>
+    </div>
+  </div>
+</div>

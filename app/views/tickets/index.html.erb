@@ -1,0 +1,66 @@
+<%= render "shared/navbar"%>
+<% if notice%>
+  <p class="text-success"><%= notice%></p>
+<%end%>
+<%if current_customer.admin?%>
+  <p>admin: <%= current_customer.email%></p>
+<%else%>
+  <p>customer: <%= current_customer.email%></p>
+<%end%>
+<%if @tickets.count == 0%>
+  <div  class="d-flex flex-column align-items-center justify-content-center">
+    <h2 class="text-danger">you don't have any tickets yet !!</h2>
+    <%= link_to "Raise new ticket", new_ticket_path, class: "btn btn-primary mt-3 mb-4 "%>
+  </div>
+<%else%>
+  <h2 class="text-center text-info mt-2 mb-2"> Tickets</h2>
+  <div class="container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Ticket No.</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Priority</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tickets.each do |ticket| %>
+          <tr>
+            <td><%= ticket.id %></td>
+            <td><%= ticket.title %></td>
+            <td><%= ticket.status %></td>
+            <td><%= ticket.priority %></td>
+            <td>
+              <div class="btn-group">
+                <button
+              type="button"
+              class="btn btn-primary dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+                  Action
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to "Show", ticket_path(ticket), class: "dropdown-item" %>
+                  </li>
+                  <li>
+                    <%= link_to "Edit", edit_ticket_path(ticket), class: "dropdown-item" %>
+                  </li>
+                  <li>
+                    <%= button_to "Delete",
+                            ticket_path(ticket),
+                            method: :delete,
+                            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                            class: "dropdown-item text-danger" %>
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<%end%>
