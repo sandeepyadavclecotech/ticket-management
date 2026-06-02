@@ -45,7 +45,9 @@
         <%= @ticket.priority %>
       </p>
       <%= link_to "Back to Tickets", tickets_path,
-          class: "btn btn-primary btn-sm" %>
+          class: "btn btn-primary btn-sm mx-2" %>
+      <%= link_to "Edit Ticket", edit_ticket_path,
+          class: "btn btn-outline-primary btn-sm" %>
     </div>
   </div>
 </div>

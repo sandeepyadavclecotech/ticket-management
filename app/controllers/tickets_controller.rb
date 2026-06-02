@@ -11,21 +11,21 @@ class TicketsController < ApplicationController
   end
 
   def index
-  if current_customer.admin?
-    @tickets = Ticket.all
-  else
-    @tickets = current_customer.tickets
-  end
+    if current_customer.admin?
+      @tickets = Ticket.all
+    else
+      @tickets = current_customer.tickets
+    end
 
-  if params[:search].present?
-    query = "%#{params[:search]}%"
+    if params[:search].present?
+      query = "%#{params[:search]}%"
 
-    @tickets = @tickets.where(
-      "title LIKE :query OR status LIKE :query OR priority LIKE :query OR id LIKE :query",
-      query: query
-    )
+      @tickets = @tickets.where(
+        "title LIKE :query OR status LIKE :query OR priority LIKE :query OR id LIKE :query",
+        query: query
+      )
+    end
   end
-end
 
   def new
     @ticket = Ticket.new
@@ -75,5 +75,6 @@ private
  def ticket_params
    params.require(:ticket).permit(:title, :description, :priority, :status, images: [])
  end
+
 
 end
