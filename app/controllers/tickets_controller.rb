@@ -73,7 +73,7 @@ end
 
 private
  def ticket_params
-   params.require(:ticket).permit(:title, :description, :priority, :status)
+   params.require(:ticket).permit(:title, :description, :priority, :status, images: [])
  end
 
 end

@@ -1,13 +1,51 @@
-<%= render "shared/navbar"%>
-
-<h1 class="text-center">show page</h1>
-<div class="container">
-  <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+<%= render "shared/navbar" %>
+<h1 class="text-center">Show Page</h1>
+<div class="container d-flex justify-content-center">
+  <div class="card text-center" style="width: 18rem;">
+    <% if @ticket.images.attached? %>
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <% @ticket.images.each_with_index do |img, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <%= image_tag img,
+                  class: "d-block w-100",
+                  style: "height: 250px; object-fit: cover;" %>
+            </div>
+          <% end %>
+        </div>
+        <% if @ticket.images.count > 1 %>
+          <button class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExample"
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExample"
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        <% end %>
+      </div>
+    <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= @ticket.title%></h5>
-      <p class="card-text"><%=@ticket.description %></p>
-      <%= link_to "Back to Tickets", tickets_path, class: "btn btn-primary btn-sm"%>
+      <h5 class="card-title"><%= @ticket.title %></h5>
+      <p class="card-text">
+        <%= @ticket.description %>
+      </p>
+      <p>
+        <strong>Status:</strong>
+        <%= @ticket.status %>
+      </p>
+      <p>
+        <strong>Priority:</strong>
+        <%= @ticket.priority %>
+      </p>
+      <%= link_to "Back to Tickets", tickets_path,
+          class: "btn btn-primary btn-sm" %>
     </div>
   </div>
 </div>
