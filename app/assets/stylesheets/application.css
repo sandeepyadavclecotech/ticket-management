@@ -13,12 +13,48 @@
  *= require_tree .
  *= require_self
  */
-
+* {
+  font-family: "Times New Roman", Times, serif;
+}
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-color: black;
 }
 
-.error-text{
+.error-text {
   color: rgb(102, 2, 2);
+}
+
+.card1 {
+  height: 120px;
+  width: 260px;
+  border: 1px solid rgb(8, 3, 3);
+  margin: 20px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  transition: 0.4s ease;
+}
+
+.card1:hover {
+  border-color: red;
+  transform: translateY(-5px);
+  transform: scale(1.1);
+}
+
+.row1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.row2 {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
