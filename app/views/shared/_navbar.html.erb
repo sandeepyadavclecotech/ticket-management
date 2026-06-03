@@ -13,7 +13,7 @@
         <% end %>
         <li><%= link_to "Ticket Summary", summary_path, class: "nav-link px-2 text-white" %></li>
       </ul>
-      <div class="text-end mx-3">
+      <div class="text-end mx-3 ">
         <%= form_with url: tickets_path, method: :get, local: true, class: "d-flex" do |form| %>
           <%= form.text_field :search,
                               value: params[:search],
@@ -27,7 +27,7 @@
           <%= button_to "Logout",
                         destroy_customer_session_path,
                         method: :delete,
-                        class: "btn btn-danger" %>
+                        class: "btn btn-danger logout" %>
         <% else %>
           <%= link_to "Login",
                       new_customer_session_path,

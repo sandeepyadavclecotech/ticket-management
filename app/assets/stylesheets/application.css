@@ -59,3 +59,17 @@
   align-items: center;
   margin-top: 40px;
 }
+
+@media (max-width: 575.98px) {
+  .box {
+    display: flex;
+    flex-direction: column;
+  }
+  .container nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .logout {
+    margin-top: 10px;
+  }
+}
