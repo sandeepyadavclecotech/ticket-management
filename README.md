@@ -185,8 +185,7 @@ end
 ### Clone Repository
 
 ```bash
-git clone https://github.com/sandeepyadavclecotech/complaint-ticket-management.git
-cd complaint-ticket-management
+git clone https://github.com/sandeepyadavclecotech/ticket-management.git
 ```
 
 ### Install Dependencies
