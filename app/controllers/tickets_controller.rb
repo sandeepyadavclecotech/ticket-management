@@ -17,6 +17,7 @@ class TicketsController < ApplicationController
     @openedTickets = tickets.where(status: "Open").count
     @closedTickets = tickets.where(status: "Closed").count
     @inProgressTickets = tickets.where(status: "In-Progress").count
+    
     if current_customer.admin?
       @tickets = Ticket.all
     else
