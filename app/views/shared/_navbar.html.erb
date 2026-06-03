@@ -17,7 +17,7 @@
         <%= form_with url: tickets_path, method: :get, local: true, class: "d-flex" do |form| %>
           <%= form.text_field :search,
                               value: params[:search],
-                              placeholder: "Search tickets",
+                              placeholder: "Search tickets, title...",
                               class: "form-control me-2" %>
           <%= form.submit "Search", class: "btn btn-outline-warning" %>
         <% end %>
