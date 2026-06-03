@@ -13,6 +13,11 @@
         <p><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></p>
       </div>
     </div>
+    <% if flash[:alert] %>
+      <div class="text-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
     <% if devise_mapping.rememberable? %>
       <div class="field row">
         <div class="col-6">
