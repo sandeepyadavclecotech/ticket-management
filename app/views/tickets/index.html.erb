@@ -9,7 +9,7 @@
 <%end%>
 <%if @tickets.count == 0%>
   <div  class="d-flex flex-column align-items-center justify-content-center">
-    <h2 class="text-danger">you don't have any tickets yet !!</h2>
+    <h2 class="error-text">Ticket not found !!</h2>
     <%= link_to "Raise new ticket", new_ticket_path, class: "btn btn-primary mt-3 mb-4 "%>
   </div>
 <%else%>
