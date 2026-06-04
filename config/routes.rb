@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
  # devise_for :admins
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
    get "/summary", to: "tickets#summary"
 
   root "tickets#index"
