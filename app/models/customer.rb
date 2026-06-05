@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :lockable
 
   has_many :tickets, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -17,5 +17,17 @@ class Customer < ApplicationRecord
     phone_no = conditions.delete(:phone_no)
 
     where(email: email, phone_no: phone_no).first
+  end
+
+  def toggle_lock_access
+    @customer = Customer.find(params[:id])
+    if @customer.access_locked?
+      @customer.unlock_access!
+    else
+      @customer.toggle_lock_access!
+    end
+
+    redirect_to customers_path
+
   end
 end

@@ -316,4 +316,16 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
    config.mailer_sender = 'noreply@ticketmanagement.com'
+
+   config.lock_strategy = :failed_attempts
+   config.unlock_keys =  [:email]
+   config.unlock_strategy = :both
+   config.maximum_attempts = 4
+   config.unlock_in = 1.hour
+   config.last_attempt_warning = true
+
+   #config.lock_strategy = :none
+   #config.unlock_strategy = :none
+
+
 end
