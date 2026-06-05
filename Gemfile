@@ -72,3 +72,9 @@ group :development do
   gem 'letter_opener'
   gem 'letter_opener_web'
 end
+
+gem 'dotenv-rails'
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
