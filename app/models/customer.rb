@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tickets, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   enum role: {
     customer: "customer",
@@ -19,4 +19,3 @@ class Customer < ApplicationRecord
     where(email: email, phone_no: phone_no).first
   end
 end
-
