@@ -73,3 +73,26 @@
     margin-top: 10px;
   }
 }
+
+.s-box {
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.subscription {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.card-2 {
+  margin-top: 0;
+}
+
+.subscription-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root "tickets#index"
 
   get "/summary", to: "tickets#summary"
+  get "/subscription", to: "tickets#subscription"
 
   resources :tickets do
     resources :comments, only: [:create]

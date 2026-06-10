@@ -10,6 +10,10 @@ class TicketsController < ApplicationController
     @inProgressTickets = tickets.where(status: "In-Progress").count
   end
 
+  def subscription
+    
+  end
+
   def index
      tickets = current_customer.admin? ? Ticket.all : current_customer.tickets
 
@@ -17,7 +21,7 @@ class TicketsController < ApplicationController
     @openedTickets = tickets.where(status: "Open").count
     @closedTickets = tickets.where(status: "Closed").count
     @inProgressTickets = tickets.where(status: "In-Progress").count
-    
+
     if current_customer.admin?
       @tickets = Ticket.all
     else

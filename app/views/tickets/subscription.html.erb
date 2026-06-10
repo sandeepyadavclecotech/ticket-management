@@ -1,0 +1,70 @@
+<%= render 'shared/navbar'%>
+<%if current_customer.admin?%>
+  <div class="container text-center mt-5">
+    <h2>You are an <span class="text-success">Admin</span> </23>
+  </div>
+<%else%>
+  <div class="container text-center mt-4">
+    <h2 class="text-center fw-bold">Choose Your Plan</h2>
+    <p>
+      <span class="text-muted">Best Plans For</span>
+      <span class="text-primary fw-bold">Ticket Management</span>
+    </p>
+  </div>
+  <div class="container subscription mt-5">
+    <div class="card text-center mb-3 mt-4" style="width: 18rem;">
+      <div class="s-box">
+        <p>Basic</p>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title h1">&#x24;
+          <span class="fw-bolder h1">12</span>
+        </h4>
+        <div class="subscription-list">
+          <p ><i class="fa-regular fa-circle-check mx-2 text-success"></i> Access to Summary </p>
+          <p ><i class="fa-regular fa-circle-check mx-2 text-success"></i> Up to 2 Tickets Generation</p>
+          <p ><i class="fa-regular fa-circle-xmark mx-2 text-danger"></i> Priority Upgradation</p>
+        </div>
+        <%= button_to "Choose Plan",
+      payments_create_path(price_id: "price_1TgfA2JJiLE7bgVEP651zhLJ"),
+      method: :post, class: "btn btn-outline-primary text-center" %>
+      </div>
+    </div>
+    <div class="card card-2 text-center text-bg-primary mb-3 mt-0" style="width: 18rem;">
+      <div class="s-box">
+        <p>Advance</p>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title h1">&#x24;
+          <span class="fw-bolder h1">25</span>
+        </h4>
+        <div class="subscription-list">
+          <p ><i class="fa-regular fa-circle-check mx-2 text-danger"></i> Access to Summary </p>
+          <p ><i class="fa-regular fa-circle-check mx-2 text-danger"></i> Up to 6 Tickets Generation</p>
+          <p ><i class="fa-regular fa-circle-check mx-2 text-danger"></i> Up to 3 Priority Upgradation</p>
+        </div>
+        <%= button_to "Choose Plan",
+      payments_create_path(price_id: "price_1TgfBoJJiLE7bgVEs3KPhvVq"),
+      method: :post, class: "btn btn-warning text-center" %>
+      </div>
+    </div>
+    <div class="card text-center  mb-3 mt-4" style="width: 18rem;">
+      <div class="s-box">
+        <p>Premium</p>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title h1">&#x24;
+          <span class="fw-bolder h1">50</span>
+        </h4>
+        <div class="subscription-list">
+          <p ><i class="fa-regular fa-circle-check mx-2 text-success"></i> Access to Summary </p>
+          <p ><i class="fa-regular fa-circle-check mx-2 text-success"></i> Unlimited Tickets Generation</p>
+          <p ><i class="fa-regular fa-circle-check mx-2 text-success "></i> Unlimited Priority Upgradation</p>
+        </div>
+        <%= button_to "Choose Plan",
+      payments_create_path(price_id: "price_1TgfCDJJiLE7bgVEOuTQ7ckp"),
+      method: :post, class: "btn btn-outline-primary text-center" %>
+      </div>
+    </div>
+  </div>
+<%end%>

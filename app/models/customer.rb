@@ -24,4 +24,10 @@ class Customer < ApplicationRecord
 
     where(email: email, phone_no: phone_no).first
   end
+
+
+  def subscribed?
+    subscription_status == "active" 
+  end
+
 end
