@@ -11,7 +11,7 @@ class TicketsController < ApplicationController
   end
 
   def subscription
-    
+
   end
 
   def index
@@ -40,6 +40,9 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @totalTickets = current_customer.tickets.count
+    @plan = current_customer.plan_name
+    
   end
 
 def create

@@ -8,8 +8,22 @@
     </ul>
   </div>
 <% end %>
-<%if current_customer.subscribed?%>
-  <%=render "tickets/form"%>
+<%if current_customer.subscribed? %>
+  <%if  @plan == "Basic" && @totalTickets == 2%>
+    <div class="text-center mt-5">
+      <h2>Please <span class="text-primary">Upgrage Subscription</span>  to Raise More Tickets !!</h2>
+      <p class="text-danger">Your have reached the maximum limit</p>
+      <%= link_to "Upgrade" , subscription_path, class: "btn btn-outline-primary mt-2 " %>
+    </div>
+  <%elsif @plan == "Advance" && @totalTickets == 6%>
+    <div class="text-center mt-5">
+      <h2>Please <span class="text-primary">Upgrage Subscription</span>  to Raise More Tickets !!</h2>
+      <p class="text-danger">Your have reached the maximum limit</p>
+      <%= link_to "Upgrade" , subscription_path, class: "btn btn-outline-primary mt-2 " %>
+    </div>
+  <%else%>
+    <%=render "tickets/form"%>
+  <%end%>
 <%else%>
   <div class="text-center mt-5">
     <h2>Please <span class="text-primary">Subscribe</span>  to Raise New Ticket !!</h2>
